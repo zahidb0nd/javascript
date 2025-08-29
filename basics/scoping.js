@@ -1,3 +1,5 @@
+import { exportedVar } from "./modulescript.js";
+
 function test() {
   var b = 2;
 
@@ -7,3 +9,4 @@ function test() {
   console.log(b, c);
 }
 test();
+console.dir(test);
