@@ -1,3 +1,9 @@
-import { exportedVar } from "./modulescript.js";
+function test() {
+  var b = 2;
 
-console.log(exportedVar);
+  if (true) {
+    var c = 3;
+  }
+  console.log(b, c);
+}
+test();
