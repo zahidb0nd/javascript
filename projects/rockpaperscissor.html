@@ -30,9 +30,9 @@
 
       function getComputerChoice() {
         let answer = Math.floor(Math.random() * 10);
-        if (answer > 3 && answer <= 6) {
+        if (answer < 3) {
           return "Rock";
-        } else if (answer > 6) {
+        } else if (answer < 6) {
           return "Paper";
         } else return "Scissor";
       }
