@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function add7(num) {
+        return 7 + num;
+      }
+      console.log(add7(7));
+
+      let outnum = 10;
+      console.log(outnum);
+      console.log(add7(outnum));
+
+      console.log("before" + outnum);
+      outnum = add7(outnum);
+      console.log("after" + outnum);
+
+      console.log("------------------------------------------");
+
+      function checkAge(age) {
+        if (age >= 18) {
+          return true;
+        } else {
+          return confirm("Do you have permission from your parents?");
+        }
+      }
+
+      let age = prompt("How old are you?", 18);
+
+      if (checkAge(age)) {
+        alert("Access granted");
+        // If access is granted, let's also try to show the movie.
+        showMovie(age); // This line CALLS the function.
+      } else {
+        alert("Access denied");
+      }
+
+      function showMovie(age) {
+        if (checkAge(age)) {
+          return;
+        }
+      }
+    </script>
+  </body>
+</html>
