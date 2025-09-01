@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let humanScore = 0;
+      let computerScore = 0;
+
+      function playRound(humanChoice, ComputerChoice) {
+        const human = humanChoice.toLowerCase();
+        const computer = ComputerChoice.toLowerCase();
+
+        console.log(`You chose :${human}`);
+        console.log(`computer chose :${computer}`);
+
+        if (human === computer) {
+          console.log("It is a Tie!");
+        } else if (
+          (humanSelection === "rock" && computerSelection === "Scissor") ||
+          (humanSelection === "paper" && computerSelection === "Rock") ||
+          (humanSelection === "scissor" && computerSelection === "Paper")
+        ) {
+          console.log(`You win ${human} beats ${computer}`);
+        } else console.log(`Computer wins ${computer} beats ${human}`);
+      }
+
+      function getComputerChoice() {
+        let answer = Math.floor(Math.random() * 10);
+        if (answer > 3 && answer <= 6) {
+          return "Rock";
+        } else if (answer > 6) {
+          return "Paper";
+        } else return "Scissor";
+      }
+
+      function getHumanChoice() {
+        let choice = prompt("Enter an option.(Rock,Paper or Scissor)");
+        return choice;
+      }
+      const humanSelection = getHumanChoice();
+      const computerSelection = getComputerChoice();
+      playRound(humanSelection, computerSelection);
+    </script>
+  </body>
+</html>
