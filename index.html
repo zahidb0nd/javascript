@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zahid's Projects</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* 1. Basic Setup & Modern Font */
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f7f9; /* Light gray background */
+        color: #333;
+        margin: 0;
+        padding: 2rem;
+      }
+
+      /* 2. Main Header Styling */
+      .header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .header h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        margin: 0;
+      }
+      .header p {
+        font-size: 1.2rem;
+        color: #667;
+      }
+
+      /* 3. The Project Grid (using Flexbox) */
+      .project-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem; /* The space between cards */
+      }
+
+      /* 4. The Project Card Design */
+      .project-card {
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        width: 300px;
+        padding: 1.5rem 2rem;
+        text-align: left;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      /* 5. The Hover Effect */
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-card h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 0;
+      }
+
+      .project-card p {
+        font-size: 1rem;
+        color: #556;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>My Project Showcase</h1>
+      <p>A collection of my work in JavaScript.</p>
+    </header>
+
+    <main>
+      <div class="project-grid">
+        <a href="projects/drum_kit/index.html" class="project-card">
+          <h2>🥁 Drum Kit</h2>
+          <p>
+            An interactive drum kit that plays sounds when you press the
+            corresponding keys. Built with vanilla JavaScript.
+          </p>
+        </a>
+
+        <a href="projects/rock paper scissor/" class="project-card">
+          <h2>🚀 Project Two</h2>
+          <p>
+            A brief and exciting description of your second amazing project goes
+            right here.
+          </p>
+        </a>
+      </div>
+    </main>
+  </body>
+</html>
