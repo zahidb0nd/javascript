@@ -3,47 +3,120 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        margin: 0;
+      }
+      #playButton {
+        font-size: 1.2rem;
+        padding: 10px 25px;
+        margin: 20px;
+        border-radius: 8px;
+        border: none;
+        background-color: #1abc9c;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      #playButton:hover {
+        background-color: #16a085;
+      }
+      #resultDisplay {
+        font-size: 2rem;
+        min-height: 3rem; /* Prevents layout shift */
+        font-weight: bold;
+      }
+      #scoreDisplay {
+        font-size: 1.5rem;
+        color: #bdc3c7;
+      }
+    </style>
   </head>
   <body>
+    <h1>Rock, Paper, Scissor</h1>
+    <button id="playButton">Play Round</button>
+    <h1 id="resultDisplay">Click the button to start!</h1>
+    <p id="scoreDisplay">You: 0 | Computer: 0</p>
+
     <script>
+      // --- Global Variables & Element References ---
       let humanScore = 0;
       let computerScore = 0;
 
-      function playRound(humanChoice, ComputerChoice) {
-        const human = humanChoice.toLowerCase();
-        const computer = ComputerChoice.toLowerCase();
+      const resultDisplay = document.querySelector("#resultDisplay");
+      const scoreDisplay = document.querySelector("#scoreDisplay");
+      const playButton = document.querySelector("#playButton");
 
-        console.log(`You chose :${human}`);
-        console.log(`computer chose :${computer}`);
+      // --- Event Listener ---
+      // This makes the button run our main game function when clicked
+      playButton.addEventListener("click", playGame);
 
-        if (human === computer) {
-          console.log("It is a Tie!");
-        } else if (
-          (humanSelection === "rock" && computerSelection === "Scissor") ||
-          (humanSelection === "paper" && computerSelection === "Rock") ||
-          (humanSelection === "scissor" && computerSelection === "Paper")
-        ) {
-          console.log(`You win ${human} beats ${computer}`);
-        } else console.log(`Computer wins ${computer} beats ${human}`);
+      // --- Main Game Function ---
+      function playGame() {
+        const humanSelection = getHumanChoice();
+        // If the user cancels the prompt, stop the function
+        if (!humanSelection) {
+          resultDisplay.textContent = "Game canceled.";
+          return;
+        }
+
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+        updateScore();
       }
 
+      // --- Core Game Logic ---
+      function playRound(humanChoice, computerChoice) {
+        // Convert choices to lowercase for easy comparison and validation
+        const human = humanChoice.toLowerCase();
+        const computer = computerChoice.toLowerCase();
+
+        const validChoices = ["rock", "paper", "scissor"];
+        if (!validChoices.includes(human)) {
+          resultDisplay.textContent = `Invalid choice: "${humanChoice}". Please try again.`;
+          return;
+        }
+
+        if (human === computer) {
+          resultDisplay.textContent = `It's a Tie! Both chose ${human}.`;
+        } else if (
+          (human === "rock" && computer === "scissor") ||
+          (human === "paper" && computer === "rock") ||
+          (human === "scissor" && computer === "paper")
+        ) {
+          humanScore++;
+          resultDisplay.textContent = `You win! Your ${human} beats the computer's ${computer}.`;
+        } else {
+          computerScore++;
+          resultDisplay.textContent = `You lose! The computer's ${computer} beats your ${human}.`;
+        }
+      }
+
+      function updateScore() {
+        scoreDisplay.textContent = `You: ${humanScore} | Computer: ${computerScore}`;
+      }
+
+      // --- Helper Functions ---
       function getComputerChoice() {
-        let answer = Math.floor(Math.random() * 10);
-        if (answer < 1 / 3) {
-          return "Rock";
-        } else if (answer < 2 / 3) {
-          return "Paper";
-        } else return "Scissor";
+        const choices = ["Rock", "Paper", "Scissor"];
+        const randomIndex = Math.floor(Math.random() * choices.length);
+        return choices[randomIndex];
       }
 
       function getHumanChoice() {
-        let choice = prompt("Enter an option.(Rock,Paper or Scissor)");
+        let choice = prompt("Enter an option (Rock, Paper, or Scissor)");
         return choice;
       }
-      const humanSelection = getHumanChoice();
-      const computerSelection = getComputerChoice();
-      playRound(humanSelection, computerSelection);
     </script>
   </body>
 </html>
