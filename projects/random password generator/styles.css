@@ -1,0 +1,153 @@
+/* --- Google Font Import (Similar to Netflix Sans) --- */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
+/* --- General Setup --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #141414; /* Netflix Black */
+  font-family: "Montserrat", sans-serif;
+  color: #f5f5f5; /* Off-white text */
+}
+
+/* --- Main Container --- */
+.container {
+  background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent black overlay */
+  padding: 3rem;
+  border-radius: 4px; /* Netflix uses sharp corners */
+  width: 90%;
+  max-width: 450px;
+}
+
+/* --- Typography --- */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: #e50914; /* Netflix Red */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- Form Layout --- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- Input Fields (Text & Number) --- */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 16px;
+  background-color: #333;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom-color 0.3s;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+  color: #8c8c8c;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-bottom-color: #e50914; /* Red underline on focus */
+}
+
+/* --- Custom Checkboxes --- */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-group label {
+  color: #b3b3b3;
+  cursor: pointer;
+  position: relative;
+  padding-left: 35px;
+  font-size: 0.95rem;
+}
+
+.checkbox-group label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border: 2px solid #8c8c8c;
+  border-radius: 3px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.checkbox-group label::after {
+  content: "✔";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  color: #141414; /* Dark checkmark */
+  font-size: 18px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+input[type="checkbox"]:checked + label::before {
+  background-color: #e50914;
+  border-color: #e50914;
+}
+
+input[type="checkbox"]:checked + label::after {
+  transform: translateY(-50%) scale(1);
+}
+
+/* --- Buttons --- */
+button {
+  padding: 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+/* Primary Button */
+.btn-generate {
+  background-color: #e50914; /* Netflix Red */
+  color: #ffffff;
+}
+
+/* Secondary Button */
+.btn-copy {
+  background-color: #333;
+  color: #ffffff;
+  border: 1px solid #8c8c8c;
+}
+
+button:hover {
+  opacity: 0.85;
+}
