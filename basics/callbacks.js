@@ -1,12 +1,18 @@
+function callPizzaShop(callback) {
+  //call pizza shop
+  callback();
+}
 function orderPizza(callback) {
-  console.log("pizza is ordered");
-  setTimeout(() => {
-    const pizza = "🍕";
-    callback(pizza);
-  }, 2000);
+  //order pizza
+  callback();
+}
+function eatPizza(callback) {
+  //eat pizza
+  callback();
 }
 
-function pizzaReady(pizza) {
-  console.log(`pizza is ready ${pizza}`);
-}
-orderPizza(pizzaReady);
+thing1(() => {
+  thing2(() => {
+    thing3(() => {});
+  });
+});
