@@ -11,8 +11,10 @@ function eatPizza(callback) {
   callback();
 }
 
-thing1(() => {
-  thing2(() => {
-    thing3(() => {});
+callPizzaShop(() => {
+  orderPizza(() => {
+    eatPizza(() => {
+      // No call to thing1 here, so no ReferenceError
+    });
   });
 });
