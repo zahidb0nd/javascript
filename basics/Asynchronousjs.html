@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function orderCarPart(partName) {
+        console.log(`Ordering ${partName} ...`);
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(`${partName} has arrived!`);
+          }, 2000);
+        });
+      }
+
+      async function installPart() {
+        console.log("Placing order for a new turbo.");
+        const notification = await orderCarPart("GReddy T88 Turbo");
+        console.log(notification);
+        console.log("Installing the new turbo.");
+      }
+      installPart();
+    </script>
+  </body>
+</html>

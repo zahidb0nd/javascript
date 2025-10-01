@@ -3,20 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>callback</title>
+    <link rel="shortcut icon" href="#" />
   </head>
+  
   <body>
+    <form action="">
+      <label for="parts"> Enter part name: </label>
+      <input type="text" id="parts" name="parts" />
+    </form>
+    <button id="part-search">Search</button>
+    <h1 id="resultDisplay"></h1>
     <script>
-      function ask(question, yes, no) {
-        if (confirm(question)) yes();
-        else no();
+      const searchButton = document.getElementById("part-search");
+      const partInput = document.getElementById("parts");
+      const displayResult = document.getElementById("resultDisplay");
+
+      function searchForParts(partName, onSuccess, onFailure) {
+        displayResult.innerText = "Searching...";
+
+        setTimeout(() => {
+          const partFound = Math.random() > 0.5;
+          partFound ? onSuccess(partName) : onFailure(partName);
+        }, 2000);
+      }
+      function onSuccess(message) {
+        displayResult.innerText = `Found the ${message}!`;
       }
 
-      ask(
-        "Do you agree?",
-        () => alert("You agreed."),
-        () => alert("You canceled the execution.")
-      );
+      function onFailure(message) {
+        displayResult.innerText = `Sorry, ${message} is out of stock`;
+      }
+
+      searchButton.addEventListener("click", function () {
+        const desiredPart = partInput.value;
+        searchForParts(desiredPart, onSuccess, onFailure);
+      });
     </script>
   </body>
 </html>

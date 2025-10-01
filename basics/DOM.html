@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="car-name">Mazda RX-7</h1>
+    <button id="paint-button">Paint it Red</button>
+    <button id="car-button">Change to skyline</button>
+    <script>
+      const carTitle = document.getElementById("car-name");
+      const paintButton = document.getElementById("paint-button");
+      const skylineBtn = document.getElementById("car-button");
+
+      paintButton.addEventListener("click", () => {
+        carTitle.style.color = "red";
+      });
+
+      skylineBtn.addEventListener("click", () => {
+        carTitle.textContent = "Nissan Skyline";
+        carTitle.style.color = "blue";
+      });
+    </script>
+  </body>
+</html>
