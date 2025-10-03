@@ -1,7 +1,7 @@
 function fetchData() {
   // fetch() already returns a promise, so we just return its entire chain.
   return fetch(
-    "https://api.openweathermap.org/data/2.5/weather?lat=12.925007&lon=77.593803&appid=025bdff0dd8e12fcde39c74752b02de0"
+    "https://api.openweathermap.org/data/2.5/weather?lat=12.925007&lon=77.593803&appid="
   )
     .then((response) => response.json())
     .then((data) => {
